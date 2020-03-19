@@ -70,6 +70,12 @@ public enum SPAlert {
 		return alertView
     }
 
+	/**
+	 Present with an activity indicator.
+
+	 - parameter message: Subtitle in alert. There is no title.
+	 - parameter timeout: Automatic dismissal trigger duration.
+	 */
 	@discardableResult
 	public static func presentLoading(message: String, timeout: Double? = nil) -> SPAlertView {
 		let alertView = SPAlertView(loadingMessage: message)
