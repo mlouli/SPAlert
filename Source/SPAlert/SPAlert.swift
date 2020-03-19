@@ -33,9 +33,12 @@ public enum SPAlert {
      - parameter message: Subtitle in alert. Optional.
      - parameter preset: Сonfigureв preset with layout and icons.
      */
-    public static func present(title: String, message: String? = nil, preset: SPAlertPreset) {
+	@discardableResult
+    public static func present(title: String, message: String? = nil, preset: SPAlertPreset) -> SPAlertView {
         let alertView = SPAlertView(title: title, message: message, preset: preset)
         alertView.present()
+
+		return alertView
     }
     
     /**
@@ -45,9 +48,12 @@ public enum SPAlert {
      - parameter message: Subtitle in alert. Optional.
      - parameter image: Custom `UIImage` for alert. No need recize it before.
      */
-    public static func present(title: String, message: String? = nil, image: UIImage) {
+	@discardableResult
+    public static func present(title: String, message: String? = nil, image: UIImage) -> SPAlertView {
         let alertView = SPAlertView(title: title, message: message, image: image)
         alertView.present()
+
+		return alertView
     }
     
     /**
@@ -55,18 +61,24 @@ public enum SPAlert {
      
      - parameter haptic: Pass with vibro using with present alet.
      */
-    public static func present(message: String, haptic: SPAlertHaptic = .none) {
+	@discardableResult
+    public static func present(message: String, haptic: SPAlertHaptic = .none) -> SPAlertView {
         let alertView = SPAlertView(message: message)
         alertView.haptic = haptic
         alertView.present()
+
+		return alertView
     }
 
-	public static func presentLoading(message: String, timeout: Double? = nil) {
+	@discardableResult
+	public static func presentLoading(message: String, timeout: Double? = nil) -> SPAlertView {
 		let alertView = SPAlertView(loadingMessage: message)
 		alertView.width = 125
 		alertView.dismissByTap = false
 		alertView.duration = timeout
 		alertView.disableUserInteractionWhenPresenting = true
 		alertView.present()
+
+		return alertView
 	}
 }
